@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmanuel Abraham | Designer & Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+        section { padding: 5rem 0; }
+
+        /* Navigation */
+        header { background: rgba(255, 255, 255, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); backdrop-filter: blur(10px); }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { text-decoration: none; font-weight: 500; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        #about { padding-top: 8rem; display: flex; align-items: center; gap: 4rem; }
+        .hero-content { flex: 1; }
+        .hero-image { flex: 1; display: flex; justify-content: center; }
+        .profile-img { width: 300px; height: 300px; border-radius: 20px; object-fit: cover; border: 4px solid var(--white); box-shadow: var(--shadow); background: #e2e8f0;}
+        .hero-content h1 { font-size: 3rem; margin-bottom: 1rem; color: var(--text-dark); }
+        .hero-content p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; }
+        .skills { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .skill-tag { background: var(--white); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; box-shadow: var(--shadow); border: 1px solid #e2e8f0; }
+
+        /* Portfolio Grid */
+        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.2rem; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .project-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); border: 1px solid #e2e8f0; }
+        .project-card:hover { transform: translateY(-8px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .project-img { width: 100%; height: 220px; background: #e2e8f0; overflow: hidden; }
+        .project-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .project-card:hover .project-img img { transform: scale(1.1); }
+        .project-info { padding: 1.5rem; }
+        .project-info h3 { margin-bottom: 0.5rem; color: var(--primary); }
+        .project-info p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
+
+        /* Contact & Footer */
+        .contact-container { background: var(--white); padding: 3rem; border-radius: 20px; box-shadow: var(--shadow); display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        form { display: flex; flex-direction: column; gap: 1rem; }
+        input, textarea { padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; }
+        .btn { background: var(--primary); color: white; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; transition: var(--transition); text-align: center; text-decoration: none; }
+        .btn:hover { background: var(--primary-hover); }
+        footer { text-align: center; padding: 2rem; background: var(--text-dark); color: white; margin-top: 4rem; }
+
+        @media (max-width: 768px) {
+            #about { flex-direction: column-reverse; text-align: center; padding-top: 6rem; }
+            .contact-container { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">Emmanuel.A</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about" class="container">
+        <div class="hero-content">
+            <h1>Hi, I’m Emmanuel Abraham.</h1>
+            <p>I am a <strong>Graphic Designer</strong> and <strong>Web Developer</strong>. I specialize in crafting intuitive digital interfaces and visual stories for the food and logistics industry.</p>
+            <div class="skills">
+                <span class="skill-tag">HTML/CSS</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Photoshop</span>
+                <span class="skill-tag">Illustrator</span>
+                <span class="skill-tag">UI/UX</span>
+            </div>
+            <div style="margin-top: 2rem;">
+                <a href="#contact" class="btn">Start a Project</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="Emmanuel.png" alt="Emmanuel Abraham" class="profile-img">
+        </div>
+    </section>
+
+    <section id="portfolio" class="container">
+        <h2 class="section-title">Selected Case Studies</h2>
+        <div class="portfolio-grid">
+            
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=500&auto=format&fit=crop" alt="Food Design App">
+                </div>
+                <div class="project-info">
+                    <h3>CraveFood Interface</h3>
+                    <p>A vibrant and user-centric mobile app design focused on streamlining the gourmet food ordering experience.</p>
+                    <a href="#" style="color: var(--primary); font-weight: bold;">View Details →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="BELLEFULL.jpg" alt="Culinary Branding">
+                </div>
+                <div class="project-info">
+                    <h3>Urban Kitchen Branding</h3>
+                    <p>Visual identity and digital menu design for a modern culinary studio and cloud kitchen startup.</p>
+                    <a href="#" style="color: var(--primary); font-weight: bold;">View Details →</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">
+                    <img src="logistic 3.jpg" alt="Delivery Service App">
+                </div>
+                <div class="project-info">
+                    <h3>SwiftRoute Logistics</h3>
+                    <p>A comprehensive mobile design for a last-mile delivery service featuring real-time tracking and dispatch.</p>
+                    <a href="#" style="color: var(--primary); font-weight: bold;">View Details →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <div class="contact-container">
+            <div>
+                <h3>Let's Talk</h3>
+                <p>Ready to bring your food or logistics brand to life? I'm just an email away.</p>
+                <div style="margin-top: 2rem;">
+                    <p><i class="fa-solid fa-envelope" style="color: var(--primary);"></i> emmymirakulus225@gmail.com</p>
+                    <p style="margin-top: 1rem;"><i class="fa-brands fa-linkedin" style="color: var(--primary);"></i> Emmanuel Abraham</p>
+                </div>
+            </div>
+            <form>
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea rows="4" placeholder="How can I help you?" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Emmanuel Abraham | All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
