@@ -4,69 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emmanuel Abraham | Creative Director & Web Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --bg-light: #f8fafc;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-            --white: #ffffff;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --transition: all 0.3s ease;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #60a5fa;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 5rem 0; }
 
         /* Navigation */
-        header { background: rgba(255, 255, 255, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1); backdrop-filter: blur(10px); }
-        nav { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
-        .nav-links { display: flex; align-items: center; gap: 2rem; }
-        .nav-links a { text-decoration: none; font-weight: 500; transition: var(--transition); }
+        header { background: rgba(15, 23, 42, 0.9); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(12px); }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        
+        /* Branded Logo */
+        .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon { background: var(--primary); color: white; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-weight: 800; font-size: 1.2rem; }
+        .logo-name { font-size: 1.1rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.5px; }
+        .logo-brand { font-size: 0.7rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+        .nav-links a { text-decoration: none; font-weight: 500; font-size: 0.95rem; color: var(--text-muted); transition: var(--transition); }
         .nav-links a:hover { color: var(--primary); }
-        .cv-btn { background: var(--primary); color: white !important; padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 600; }
+        
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-main); }
 
         /* Hero Section */
-        #about { padding-top: 8rem; display: flex; align-items: center; gap: 4rem; }
-        .hero-content { flex: 1; }
-        .hero-image { flex: 1; display: flex; justify-content: center; }
-        .profile-img { width: 320px; height: 320px; border-radius: 50%; object-fit: cover; border: 8px solid var(--white); box-shadow: var(--shadow); background: #e2e8f0;}
-        .hero-content h1 { font-size: 3rem; margin-bottom: 1rem; color: var(--text-dark); line-height: 1.1; }
-        .hero-content p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; }
-        .skills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-        .skill-tag { background: #e2e8f0; padding: 0.4rem 0.9rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: var(--text-dark); }
+        #hero { padding: 10rem 0 6rem; display: flex; align-items: center; gap: 4rem; }
+        .hero-content { flex: 1.2; }
+        .hero-image { flex: 0.8; display: flex; justify-content: center; position: relative; }
+        .design-mockup { width: 100%; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); }
+        
+        h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; font-weight: 800; color: var(--text-main); }
+        .hero-p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; }
+        
+        .btn { padding: 0.9rem 1.8rem; border-radius: 8px; font-weight: 600; transition: var(--transition); cursor: pointer; text-decoration: none; display: inline-block; border: none; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
+        .btn-secondary { background: transparent; color: var(--primary); border: 2px solid var(--primary); margin-left: 10px; }
 
-        /* Portfolio */
-        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.2rem; }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .project-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); }
-        .project-card:hover { transform: translateY(-8px); }
-        .project-img { width: 100%; height: 200px; overflow: hidden; }
-        .project-img img { width: 100%; height: 100%; object-fit: cover; }
-        .project-info { padding: 1.5rem; }
-        .project-info h3 { color: var(--primary); margin-bottom: 0.5rem; }
+        /* Skill Bars */
+        .skills-bars { margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .bar-label { display: flex; justify-content: space-between; font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; }
+        .bar-bg { background: rgba(255,255,255,0.1); height: 8px; border-radius: 10px; }
+        .bar-fill { background: var(--primary); height: 100%; border-radius: 10px; }
 
-        /* Contact */
-        .contact-container { background: var(--white); padding: 3rem; border-radius: 20px; box-shadow: var(--shadow); display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .contact-item { display: flex; align-items: center; gap: 10px; margin-top: 1rem; color: var(--text-muted); }
-        form { display: flex; flex-direction: column; gap: 1rem; }
-        input, textarea { padding: 0.8rem; border: 1px solid #e2e8f0; border-radius: 8px; }
-        .btn { background: var(--primary); color: white; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600; border: none; cursor: pointer; text-align: center; }
+        /* Case Studies */
+        #portfolio { padding: 8rem 0; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .project-card { background: var(--bg-card); border-radius: 20px; overflow: hidden; transition: var(--transition); border: 1px solid rgba(255,255,255,0.05); }
+        .project-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .project-img { height: 240px; overflow: hidden; }
+        .project-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .project-card:hover .project-img img { transform: scale(1.1); }
+        .project-body { padding: 2rem; }
+        .project-body h3 { color: var(--primary); margin-bottom: 1rem; }
+        .case-study-meta { font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: 1rem; }
 
-        footer { text-align: center; padding: 2rem; background: var(--text-dark); color: white; margin-top: 4rem; }
+        /* Contact Box */
+        .contact-box { background: var(--bg-card); border-radius: 30px; padding: 4rem; display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; border: 1px solid rgba(255,255,255,0.05); }
+        input, textarea { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 1rem; border-radius: 12px; width: 100%; margin-bottom: 1.5rem; }
+        input:focus { border-color: var(--primary); outline: none; }
 
-        @media (max-width: 768px) {
-            #about { flex-direction: column-reverse; text-align: center; }
-            .contact-container { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
+        footer { text-align: center; padding: 4rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.05); }
+
+        /* Mobile Menu */
+        @media (max-width: 968px) {
+            #hero { flex-direction: column-reverse; text-align: center; padding-top: 8rem; }
+            h1 { font-size: 2.5rem; }
+            .skills-bars { grid-template-columns: 1fr; }
+            .contact-box { grid-template-columns: 1fr; padding: 2rem; }
+            
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 75%; 
+                background: var(--bg-dark); flex-direction: column; justify-content: center; transition: 0.4s;
+            }
+            .nav-links.active { right: 0; }
         }
     </style>
 </head>
@@ -74,87 +100,120 @@
 
     <header>
         <nav class="container">
-            <div class="logo">E.Abraham</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
+            <a href="#" class="logo-wrapper">
+                <div class="logo-icon">M</div>
+                <div class="logo-text">
+                    <span class="logo-name">E. ABRAHAM</span>
+                    <span class="logo-brand">MaNuEl Media</span>
+                </div>
+            </a>
+            <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links" id="nav-list">
+                <li><a href="#portfolio">Work</a></li>
+                <li><a href="#hero">About</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="resume.pdf" class="cv-btn" download>Download CV</a></li>
+                <li><a href="resume.pdf" class="btn-primary btn" style="padding: 0.6rem 1.2rem;" download>CV</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="about" class="container">
+    <section id="hero" class="container">
         <div class="hero-content">
-            <h1>Creative Solutions for the Digital Age.</h1>
-            <p>I’m <strong>Emmanuel Abraham</strong>, a detail-oriented Graphic Designer and Certified Web Developer[cite: 1, 24]. As the Founder of <strong>MaNuEl Media</strong>, I specialize in multimedia storytelling, responsive web technologies, and visual brand identities[cite: 24, 29, 30].</p>
-            <div class="skills">
-                <span class="skill-tag">HTML5/CSS3</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">Tailwind CSS</span>
-                <span class="skill-tag">Photoshop</span>
-                <span class="skill-tag">Illustrator</span>
-                <span class="skill-tag">After Effects</span>
-                <span class="skill-tag">UI/UX Design</span>
-                <span class="skill-tag">WordPress</span>
+            <h1>The Brand Expert.</h1>
+            <p class="hero-p">Crafting Visual Identities that Define Modern Brands.</p>
+            <div class="cta-group">
+                <a href="#portfolio" class="btn btn-primary">View Case Studies</a>
+                <a href="#contact" class="btn btn-secondary">Hire Me</a>
             </div>
-            <div style="margin-top: 2rem;">
-                <a href="#contact" class="btn">Start a Project</a>
+            
+            <div class="skills-bars">
+                <div class="bar-container">
+                    <div class="bar-label"><span>Branding & Design</span><span>95%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+                </div>
+                <div class="bar-container">
+                    <div class="bar-label"><span>Web Development</span><span>85%</span></div>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
+                </div>
             </div>
         </div>
         <div class="hero-image">
-            <img src="Emmanuel.png" alt="Emmanuel Abraham" class="profile-img">
+            <img src="Emmanuel.png" class="design-mockup" alt="Graphic Design Showcase">
         </div>
     </section>
 
     <section id="portfolio" class="container">
-        <h2 class="section-title">Selected Case Studies</h2>
+        <div class="section-header">
+            <h2>Graphic Design Case Studies</h2>
+        </div>
         <div class="portfolio-grid">
             <div class="project-card">
-                <div class="project-img"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=500&auto=format&fit=crop" alt="Food App"></div>
-                <div class="project-info">
-                    <h3>CraveFood UI</h3>
-                    <p>Modern gourmet food ordering interface[cite: 31].</p>
+                <div class="project-img"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop" alt="Nova Branding"></div>
+                <div class="project-body">
+                    <h3>Nova Visual Identity</h3>
+                    <p>Strategic brand board featuring custom logo architecture and color theory for a tech startup.</p>
+                    <div class="case-study-meta">
+                        <p><b>Role:</b> Creative Director</p>
+                        <p><b>Tools:</b> Illustrator & Photoshop</p>
+                    </div>
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-img"><img src="BELLEFULL.jpg" alt="Branding"></div>
-                <div class="project-info">
-                    <h3>Urban Kitchen</h3>
-                    <p>Full brand identity and visual storytelling[cite: 31, 35].</p>
+                <div class="project-img"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format" alt="Motion Graphics"></div>
+                <div class="project-body">
+                    <h3>Motion Marketing</h3>
+                    <p>High-fidelity social media video assets designed for maximum audience engagement.</p>
+                    <div class="case-study-meta">
+                        <p><b>Role:</b> Multimedia Designer</p>
+                        <p><b>Tools:</b> After Effects & Premiere Pro</p>
+                    </div>
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-img"><img src="logistic 3.jpg" alt="Delivery App"></div>
-                <div class="project-info">
-                    <h3>SwiftRoute Logistics</h3>
-                    <p>Delivery service mobile UX/UI[cite: 36, 38].</p>
+                <div class="project-img"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format" alt="UI Design"></div>
+                <div class="project-body">
+                    <h3>Logistics UI System</h3>
+                    <p>A mobile-first design system for a delivery service tracking interface.</p>
+                    <div class="case-study-meta">
+                        <p><b>Role:</b> Lead UI Designer</p>
+                        <p><b>Tools:</b> Figma & Tailwind CSS</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="contact" class="container">
-        <div class="contact-container">
+        <div class="contact-box">
             <div>
-                <h3>Connect with Me</h3>
-                <p>Seeking a remote role to build high-quality digital solutions[cite: 27].</p>
-                <div class="contact-item"><i class="fa-solid fa-envelope"></i> emmymirakulus225@gmail.com</div>
-                <div class="contact-item"><i class="fa-solid fa-phone"></i> +234-903-776-0652</div>
-                <div class="contact-item"><i class="fa-solid fa-location-dot"></i> Ogba, Lagos State</div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Ready to start?</h2>
+                <p style="color: var(--text-muted);">Available for remote opportunities and high-impact design roles.</p>
+                <div style="margin-top: 2rem;">
+                    <p><i class="fas fa-envelope" style="color:var(--primary)"></i> emmymirakulus225@gmail.com</p>
+                    <p style="margin-top: 1rem;"><i class="fas fa-phone" style="color:var(--primary)"></i> +234-903-776-0652</p>
+                </div>
             </div>
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea rows="4" placeholder="Your Message" required></textarea>
-                <button type="submit" class="btn">Send Message</button>
+            <form action="https://formspree.io/f/xzdrvlav" method="POST">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Emmanuel Abraham | MaNuEl Media | All rights reserved[cite: 1, 29].</p>
+        <p>&copy; 2026 Emmanuel Abraham | MaNuEl Media | Nigeria</p>
     </footer>
 
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+    </script>
 </body>
 </html>
