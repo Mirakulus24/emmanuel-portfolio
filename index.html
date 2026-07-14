@@ -1,250 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emmanuel Abraham | Creative Director & Web Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #3b82f6;
-            --primary-hover: #2563eb;
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #60a5fa;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-
-        /* Navigation */
-        header { background: rgba(15, 23, 42, 0.9); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(12px); }
-        nav { display: flex; justify-content: space-between; align-items: center; height: 80px; }
-        
-        /* Branded Logo */
-        .logo-wrapper { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-icon { background: var(--primary); color: white; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 10px; font-weight: 800; font-size: 1.2rem; }
-        .logo-name { font-size: 1.1rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.5px; }
-        .logo-brand { font-size: 0.7rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
-
-        .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; z-index: 1000;}
-        .nav-links a { text-decoration: none; font-weight: 500; font-size: 0.95rem; color: var(--text-muted); transition: var(--transition); }
-        .nav-links a:hover { color: var(--primary); }
-        
-        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-main); }
-
-        /* Hero Section */
-        #hero { padding: 10rem 0 6rem; display: flex; align-items: center; gap: 4rem; }
-        .hero-content { flex: 1.2; }
-        .hero-image { flex: 0.8; display: flex; justify-content: center; position: relative; }
-        .design-mockup { width: 100%; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); }
-        
-        h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; font-weight: 800; color: var(--text-main); }
-        .hero-p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; }
-        
-        .btn { padding: 0.9rem 1.8rem; border-radius: 8px; font-weight: 600; transition: var(--transition); cursor: pointer; text-decoration: none; display: inline-block; border: none; }
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3); }
-        .btn-secondary { background: transparent; color: var(--primary); border: 2px solid var(--primary); margin-left: 10px; }
-
-        /* Skill Bars */
-        .skills-bars { margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .bar-label { display: flex; justify-content: space-between; font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; }
-        .bar-bg { background: rgba(255,255,255,0.1); height: 8px; border-radius: 10px; }
-        .bar-fill { background: var(--primary); height: 100%; border-radius: 10px; }
-
-        /* Case Studies */
-        #portfolio { padding: 8rem 0; }
-        .section-header { text-align: center; margin-bottom: 4rem; }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
-        .project-card { background: var(--bg-card); border-radius: 20px; overflow: hidden; transition: var(--transition); border: 1px solid rgba(255,255,255,0.05); }
-        .project-card:hover { transform: translateY(-10px); border-color: var(--primary); }
-        .project-img { height: 240px; overflow: hidden; }
-        .project-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .project-card:hover .project-img img { transform: scale(1.1); }
-        .project-body { padding: 2rem; }
-        .project-body h3 { color: var(--primary); margin-bottom: 1rem; }
-        .case-study-meta { font-size: 0.85rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; margin-top: 1rem; }
-
-        /* Contact Box */
-        .contact-box { background: var(--bg-card); border-radius: 30px; padding: 4rem; display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; border: 1px solid rgba(255,255,255,0.05); }
-        input, textarea { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 1rem; border-radius: 12px; width: 100%; margin-bottom: 1.5rem; }
-        input:focus { border-color: var(--primary); outline: none; }
-
-        footer { text-align: center; padding: 4rem; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.05); }
-
-        /* Mobile Menu */
-        @media (max-width: 968px) {
-            #hero { flex-direction: column-reverse; text-align: center; padding-top: 8rem; }
-            h1 { font-size: 2.5rem; }
-            .skills-bars { grid-template-columns: 1fr; }
-            .contact-box { grid-template-columns: 1fr; padding: 2rem; }
-            
-            .menu-toggle { display: block; }
-            .nav-links {
-                position: fixed; top: 0; right: -100%; height: 100vh; width: 75%; 
-                background: var(--bg-dark); flex-direction: column; justify-content: center; transition: 0.4s;
-            }
-            .nav-links.active { right: 0; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emmanuel Abraham | Web Developer & Designer</title>
+  <meta name="description" content="Portfolio website for Emmanuel Abraham, a web developer and graphic designer building modern websites for NGOs, churches, schools, and businesses." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <nav class="top-nav">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home">Emmanuel Abraham</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="btn btn-nav" href="assets/Emmanuel-Abraham-CV.pdf" download>Download CV</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <header>
-        <nav class="container">
-            <a href="#" class="logo-wrapper">
-                <div class="logo-icon">M</div>
-                <div class="logo-text">
-                    <span class="logo-name">E. ABRAHAM</span>
-                    <span class="logo-brand">MaNuEl Media</span>
-                </div>
-            </a>
-            <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
-            <ul class="nav-links" id="nav-list">
-                <li><a href="#portfolio">Work</a></li>
-                <li><a href="#hero">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="resume.pdf" class="btn-primary btn" style="padding: 0.6rem 1.2rem;" download>CV</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header id="home" class="hero">
+    <div class="container hero-content">
+      <div>
+        <p class="subtitle">Hi, I’m Emmanuel Abraham</p>
+        <h1><span class="hero-typed">I Design and Build Modern Websites That Help Organizations Grow Their Impact</span></h1>
+        <p class="hero-meta">Lagos, Nigeria • 3+ years of experience • Web Developer & Graphic Designer</p>
+        <p>I create fast, responsive, and conversion-focused websites that help NGOs, churches, schools, and businesses tell their story, reach more people, and grow with confidence.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="assets/Emmanuel-Abraham-CV.pdf" download>Download CV</a>
+          <a class="btn btn-secondary" href="#contact">Let’s Talk</a>
+        </div>
+        <div class="hero-badges">
+          <span>NGO Websites</span>
+          <span>Church Websites</span>
+          <span>Business Websites</span>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="avatar-frame">
+          <img src="assets/Portfolio.jpeg" alt="Portrait of Emmanuel Abraham" />
+        </div>
+        <div class="hero-card">
+          <h3>What I offer</h3>
+          <ul>
+            <li>Fast-loading responsive websites</li>
+            <li>Clean UI and clear storytelling</li>
+            <li>Modern design for mission-driven brands</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <section id="hero" class="container">
-        <div class="hero-content">
-            <h1>The Brand Expert.</h1>
-            <p class="hero-p">Crafting Visual Identities that Define Modern Brands.</p>
-            <div class="cta-group">
-                <a href="#portfolio" class="btn btn-primary">View Case Studies</a>
-                <a href="#contact" class="btn btn-secondary">Hire Me</a>
-            </div>
-            
-            <div class="skills-bars">
-                <div class="bar-container">
-                    <div class="bar-label"><span>Branding & Design</span><span>95%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
-                </div>
-                <div class="bar-container">
-                    <div class="bar-label"><span>Web Development</span><span>85%</span></div>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 85%;"></div></div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="Emmanuel.png" class="design-mockup" alt="Graphic Design Showcase">
-        </div>
-    </section>
-
-    <section id="portfolio" class="container">
-        <div class="section-header">
-            <h2>Graphic Design Case Studies</h2>
-        </div>
-        <div class="portfolio-grid">
-            <div class="project-card">
-                <div class="project-img"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop" alt="Nova Branding"></div>
-                <div class="project-body">
-                    <h3>Nova Visual Identity</h3>
-                    <p>Strategic brand board featuring custom logo architecture and color theory for a tech startup.</p>
-                    <div class="case-study-meta">
-                        <p><b>Role:</b> Creative Director</p>
-                        <p><b>Tools:</b> Illustrator & Photoshop</p>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-img"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format" alt="Motion Graphics"></div>
-                <div class="project-body">
-                    <h3>Motion Marketing</h3>
-                    <p>High-fidelity social media video assets designed for maximum audience engagement.</p>
-                    <div class="case-study-meta">
-                        <p><b>Role:</b> Multimedia Designer</p>
-                        <p><b>Tools:</b> After Effects & Premiere Pro</p>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-img"><img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format" alt="UI Design"></div>
-                <div class="project-body">
-                    <h3>Logistics UI System</h3>
-                    <p>A mobile-first design system for a delivery service tracking interface.</p>
-                    <div class="case-study-meta">
-                        <p><b>Role:</b> Lead UI Designer</p>
-                        <p><b>Tools:</b> Figma & Tailwind CSS</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="container">
-        <div class="contact-box">
+  <main>
+    <section id="about" class="section reveal">
+      <div class="container">
+        <h2 class="section-title"><span>About</span> Me</h2>
+        <div class="card about-card">
+          <p>I am a web developer and graphic designer passionate about helping NGOs, churches, schools, and businesses build beautiful, responsive, and high-performing websites. My goal is to create digital experiences that look great, solve real problems, and help organizations grow.</p>
+          <div class="about-points">
             <div>
-                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Ready to start?</h2>
-                <p style="color: var(--text-muted);">Available for remote opportunities and high-impact design roles.</p>
-                <div style="margin-top: 2rem;">
-                    <p><i class="fas fa-envelope" style="color:var(--primary)"></i> emmymirakulus225@gmail.com</p>
-                    <p style="margin-top: 1rem;"><i class="fas fa-phone" style="color:var(--primary)"></i> +234-903-776-0652</p>
-                </div>
+              <h3>Who I am</h3>
+              <p>I blend design thinking with technical execution to build websites that feel polished and purposeful.</p>
             </div>
-            <form action="https://formspree.io/f/xzdrvlav" method="POST">
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-            </form>
+            <div>
+              <h3>What I specialize in</h3>
+              <p>Responsive websites, landing pages, UI design, and visual branding for mission-led organizations.</p>
+            </div>
+            <div>
+              <h3>Who I help</h3>
+              <p>NGOs, churches, schools, startups, and small businesses that need a stronger online presence.</p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Emmanuel Abraham | MaNuEl Media | Nigeria</p>
-    </footer>
+    <section id="skills" class="section reveal">
+      <div class="container">
+        <h2 class="section-title"><span>Skills</span></h2>
+        <div class="skill-groups">
+          <div class="card skill-group">
+            <h3>Frontend</h3>
+            <ul>
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>JavaScript</li>
+            </ul>
+          </div>
+          <div class="card skill-group">
+            <h3>Backend</h3>
+            <ul>
+              <li>Django</li>
+              <li>Web App Structure</li>
+            </ul>
+          </div>
+          <div class="card skill-group">
+            <h3>Tools</h3>
+            <ul>
+              <li>Git</li>
+              <li>GitHub</li>
+              <li>VS Code</li>
+            </ul>
+          </div>
+          <div class="card skill-group">
+            <h3>Design</h3>
+            <ul>
+              <li>Photoshop</li>
+              <li>Illustrator</li>
+              <li>UI Design</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <script>
-    const menuToggle = document.getElementById('mobile-menu');
-    const navList = document.getElementById('nav-list');
-    const menuIcon = menuToggle.querySelector('i');
+    <section id="services" class="section reveal">
+      <div class="container">
+        <h2 class="section-title"><span>Services</span></h2>
+        <div class="card-grid">
+          <div class="card"><h3>Custom Website Design</h3><p>Thoughtful, modern designs tailored to your audience, brand message, and goals.</p></div>
+          <div class="card"><h3>Website Development</h3><p>Responsive websites built with clean code and strong structure for speed and reliability.</p></div>
+          <div class="card"><h3>Landing Pages</h3><p>High-converting pages for campaigns, events, products, ministries, and announcements.</p></div>
+          <div class="card"><h3>Website Maintenance</h3><p>Ongoing updates, fixes, and improvements so your website stays fresh and functional.</p></div>
+          <div class="card"><h3>Graphic Design</h3><p>Visuals, branding pieces, and promotional assets that strengthen your digital presence.</p></div>
+        </div>
+      </div>
+    </section>
 
-    menuToggle.addEventListener('click', (e) => {
-        // Stop the click from bubbling up (prevents accidental triggers)
-        e.stopPropagation();
-        
-        // Toggle the active class on the menu
-        navList.classList.toggle('active');
-        
-        // Toggle the icon between bars (hamburger) and times (X)
-        if (navList.classList.contains('active')) {
-            menuIcon.classList.remove('fa-bars');
-            menuIcon.classList.add('fa-times');
-        } else {
-            menuIcon.classList.remove('fa-times');
-            menuIcon.classList.add('fa-bars');
-        }
-    });
+    <section id="projects" class="section reveal">
+      <div class="container">
+        <h2 class="section-title"><span>Featured</span> Projects</h2>
+        <div class="card-grid project-grid">
+          <article class="project-card">
+            <img src="assets/project-placeholder.svg" alt="Preview placeholder for a hospital website" />
+            <span class="tag">Hospital Website</span>
+            <h3>Modern Health Platform</h3>
+            <p>A clean, informative website concept for healthcare organizations with clear service presentation and stronger user trust.</p>
+            <div class="project-meta"><span>HTML • CSS • JS</span><span>2026</span></div>
+            <div class="project-links"><a href="#">Live Demo</a><a href="#">GitHub</a></div>
+          </article>
+          <article class="project-card">
+            <img src="assets/project-placeholder.svg" alt="Preview placeholder for an NGO website" />
+            <span class="tag">NGO Website</span>
+            <h3>ImpactConnect NGO Platform</h3>
+            <p>A modern nonprofit website designed to showcase organizational impact, encourage volunteer participation, and simplify donations through a clean, accessible user experience.</p>
+            <div class="project-meta"><span>HTML • CSS</span><span>2026</span></div>
+            <div class="project-links"><a href="#">Live Demo</a><a href="#">GitHub</a></div>
+          </article>
+          <article class="project-card">
+            <img src="assets/project-placeholder.svg" alt="Preview placeholder for a church website" />
+            <span class="tag">Church Website</span>
+            <h3>Community Experience</h3>
+            <p>A welcoming website design for sharing sermons, events, and church updates in a clear and calming experience.</p>
+            <div class="project-meta"><span>HTML • CSS • JS</span><span>2026</span></div>
+            <div class="project-links"><a href="#">Live Demo</a><a href="#">GitHub</a></div>
+          </article>
+          <article class="project-card">
+            <img src="assets/project-placeholder.svg" alt="Preview placeholder for a school website" />
+            <span class="tag">School Website</span>
+            <h3>Educational Portal</h3>
+            <p>A friendly, structured site concept for schools to present programs, announcements, and academic information clearly.</p>
+            <div class="project-meta"><span>HTML • CSS</span><span>2026</span></div>
+            <div class="project-links"><a href="#">Live Demo</a><a href="#">GitHub</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    // Close menu when a link is clicked (user navigates to a section)
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navList.classList.remove('active');
-            menuIcon.classList.add('fa-bars');
-            menuIcon.classList.remove('fa-times');
-        });
-    });
+    <section id="experience" class="section reveal">
+      <div class="container">
+        <h2 class="section-title"><span>Experience</span></h2>
+        <div class="timeline">
+          <div class="timeline-item"><h3>Freelance Web Developer</h3><p>2025 – Present</p><span>Building modern websites for NGOs, churches, schools, and businesses with a strong focus on clarity, trust, and performance.</span></div>
+          <div class="timeline-item"><h3>HMO/Admin Officer</h3><p>2023 – 2024</p><span>Managed administrative responsibilities and supported operations with organization, reliability, and attention to detail.</span></div>
+          <div class="timeline-item"><h3>Teacher</h3><p>2020 – 2022</p><span>Delivered structured communication, guidance, and engagement while building confidence in public-facing work.</span></div>
+          <div class="timeline-item"><h3>Account Officer</h3><p>2017 – 2020</p><span>Supported financial and administrative workflows with consistency, precision, and professionalism.</span></div>
+        </div>
+      </div>
+    </section>
 
-    // Close menu if user clicks anywhere outside the menu
-    document.addEventListener('click', (e) => {
-        if (!navList.contains(e.target) && !menuToggle.contains(e.target)) {
-            navList.classList.remove('active');
-            menuIcon.classList.add('fa-bars');
-            menuIcon.classList.remove('fa-times');
-        }
-    });
-</script>
+    <section class="section reveal">
+      <div class="container">
+        <h2 class="section-title"><span>Why</span> Work With Me?</h2>
+        <div class="stats-grid">
+          <div class="card stat-card"><strong>6+</strong><span>Personal Projects</span></div>
+          <div class="card stat-card"><strong>3+</strong><span>Years Learning</span></div>
+          <div class="card stat-card"><strong>100%</strong><span>Responsive Designs</span></div>
+          <div class="card stat-card"><strong>Open</strong><span>To Freelance Work</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section reveal">
+      <div class="container">
+        <h2 class="section-title"><span>Contact</span> Me</h2>
+        <div class="card-grid contact-grid">
+          <div class="card">
+            <div class="contact-list">
+              <div><strong>Email:</strong> <a href="mailto:emmymirakulus225@gmail.com">emmymirakulus225@gmail.com</a></div>
+              <div><strong>Phone:</strong> <a href="tel:+2349036237225">+234 903 623 7225</a></div>
+              <div><strong>GitHub:</strong> <a href="https://github.com/Mirakulus24" target="_blank" rel="noreferrer">github.com/Mirakulus24</a></div>
+              <div><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/emmanuelabraham" target="_blank" rel="noreferrer">linkedin.com/in/emmanuelabraham</a></div>
+              <div><strong>WhatsApp:</strong> <a href="https://wa.me/2347089709083" target="_blank" rel="noreferrer">+234 708 970 9083</a></div>
+            </div>
+            <div class="social-links">
+              <a href="https://github.com/Mirakulus24" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://linkedin.com/in/emmanuelabraham" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="https://wa.me/2347089709083" target="_blank" rel="noreferrer">WhatsApp</a>
+            </div>
+          </div>
+          <div class="card">
+            <form id="contactForm" action="https://formspree.io/f/your-form-id" method="POST" accept-charset="UTF-8">
+              <label for="name">Name</label>
+              <input id="name" type="text" name="name" placeholder="Your Name" required />
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" placeholder="Your Email" required />
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+              <input type="hidden" name="_subject" value="New message from Emmanuel Abraham portfolio" />
+              <input type="hidden" name="_captcha" value="false" />
+              <button class="btn btn-primary" type="submit">Send Message</button>
+              <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <div><h3>Emmanuel Abraham</h3><p>Building digital experiences that help organizations grow.</p></div>
+      <div class="footer-links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
+      <div><p>© <span data-year></span> Emmanuel Abraham</p><p>Built with HTML, CSS & JavaScript</p></div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" type="button" aria-label="Back to top">↑</button>
+  <script src="script.js"></script>
 </body>
 </html>
